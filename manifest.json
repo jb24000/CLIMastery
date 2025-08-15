@@ -1,0 +1,21 @@
+{
+  "name": "CLI Mastery: Git, Bash & Linux",
+  "short_name": "CLI Mastery",
+  "description": "Git (10d), Bash (15d), Linux (30d) \u2014 timers, streaks, PR challenges, JSON editor w/ reset, quiz pools, multi-select, Review Mode.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0ea5e9",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

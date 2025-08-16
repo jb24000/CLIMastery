@@ -2,89 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>CLI Mastery</title>
-  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>CLI 30‑Day Mastery</title>
+  <meta name="theme-color" content="#6d5dfc" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/icon-192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="assets/icon-512.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <header class="app-header">
-    <h1>CLI Mastery</h1>
-    <div class="streak">🔥 <span id="streakCount">0</span>-day streak</div>
-    <button id="installBtn" class="btn hidden">Install</button>
-  </header>
-
-  <main>
-    <section class="card">
-      <div class="track-picker">
-        <label for="track">Choose Track</label>
-        <select id="track">
-          <option value="git">Git (10 Days)</option>
-          <option value="bash">Bash (15 Days)</option>
-          <option value="linux">Linux (30 Days)</option>
-        </select>
-        <button id="reviewMode" class="btn">Review Missed</button>
-        <button id="editCurriculum" class="btn" type="button">Edit Curriculum</button>
-        <button id="resetTrack" class="link">Reset Progress</button>
+  <div class="wrap">
+    <header class="hero">
+      <div class="brand">
+        <div class="mark">⌘</div>
+        <div>
+          <h1>CLI 30‑Day Mastery</h1>
+          <p class="subtitle">Build your command‑line skills with daily challenges</p>
+        </div>
       </div>
-      <div id="progress" class="progress">
-        <div id="progressBar" class="progress-bar"></div>
-        <span id="progressText">0% complete</span>
+      <div class="track">
+        <label for="trackSelect">Track</label>
+        <select id="trackSelect">
+          <option value="git">Git</option>
+          <option value="bash">Bash</option>
+          <option value="linux">Linux</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="dashboard">
+      <div class="progress-card">
+        <div class="ring">
+          <div class="ring-fill" id="ringFill"></div>
+          <div class="ring-center" id="ringText">0%</div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="card">
+          <div class="stat-num" id="streak">0</div>
+          <div class="stat-label">Day Streak</div>
+        </div>
+        <div class="card">
+          <div class="stat-num" id="completed">0</div>
+          <div class="stat-label">Days Completed</div>
+        </div>
+      </div>
+
+      <div class="notify card row">
+        <span class="bell">🔔</span>
+        <span>Enable notifications for daily reminders</span>
+        <button id="enableNotifs" class="pill muted">Enable Alerts</button>
+        <button id="resetBtn" class="pill ghost">Reset</button>
       </div>
     </section>
 
-    <section id="dayList" class="grid"></section>
-  </main>
+    <section class="day card">
+      <header class="day-head">
+        <button class="nav prev" id="prevBtn">← Prev</button>
+        <h2 id="dayTitle">Day 1: Welcome</h2>
+        <button class="nav next" id="nextBtn">Next →</button>
+      </header>
 
-  <footer class="app-footer">
-    <span>Offline • Quizzes • Timers • Pools • Streaks • Review Mode</span>
-  </footer>
+      <ul class="tasks" id="taskList">
+        <!-- JS injects two tasks -->
+      </ul>
+    </section>
 
-  <!-- Quiz Modal -->
-  <div id="quizModal" class="modal hidden">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 id="quizTitle">Quiz</h3>
-        <button id="closeQuiz" class="icon-btn" aria-label="Close">✕</button>
+    <footer class="footer">
+      <div class="left">
+        <button id="installBtn" class="pill ghost">Install App</button>
+        <button id="offlineBtn" class="pill ghost">Enable Offline</button>
       </div>
-      <div id="quizBody"></div>
-      <div class="modal-actions">
-        <button id="submitQuiz" class="btn">Submit</button>
+      <div class="right">
+        <span id="statusDot" class="dot offline"></span>
+        <span id="statusText">Offline not enabled</span>
       </div>
-    </div>
+    </footer>
   </div>
-
-  <!-- Editor Modal -->
-  <div id="editorModal" class="modal hidden">
-    <div class="modal-card" style="max-width:800px">
-      <div class="modal-header">
-        <h3>Curriculum Editor (data.json)</h3>
-        <div style="display:flex; gap:8px; align-items:center">
-          <input type="file" id="importFile" accept="application/json" class="icon-btn" title="Import JSON">
-          <button id="downloadJson" class="btn">Download JSON</button>
-          <button id="resetServer" class="btn" type="button">Reset to server version</button>
-          <button id="closeEditor" class="icon-btn" aria-label="Close">✕</button>
-        </div>
-      </div>
-      <div class="meta" style="margin-bottom:8px">
-        Changes are stored locally (offline). Use <b>Download JSON</b> to export and commit later.
-      </div>
-      <textarea id="editorArea" style="width:100%;height:50vh;background:#0b1220;color:#e5eefc;border:1px solid #1f2a44;border-radius:12px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"></textarea>
-      <div class="modal-actions" style="display:flex;justify-content:space-between;margin-top:8px">
-        <div class="meta">Tip: Pretty-print before saving.</div>
-        <div style="display:flex;gap:8px">
-          <button id="prettyPrint" class="btn" type="button">Pretty Print</button>
-          <button id="saveJson" class="btn" type="button">Save on this device</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>

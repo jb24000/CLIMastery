@@ -1,9 +1,12 @@
-[README.md](https://github.com/user-attachments/files/21811613/README.md)
-# CLI 30‑Day Mastery — Python 30‑Day Layout Match
+[README.md](https://github.com/user-attachments/files/21812178/README.md)
+# CLI Mastery — Guided/Free Modes + Resume Bullets
 
-This version mirrors the **Python 30‑Day Mastery** UI: big progress ring, stat cards, alerts row, and a centered day card with two tasks.
+**Modes**
+- **Guided Path (default):** 60 total days — Git(12) → Bash(18) → Linux(30). Ring shows overall progress. Track selection is disabled.
+- **Pick‑Your‑Track:** Work inside a single track; ring shows per‑track progress.
 
-- Edit **colors/blur/shadows** in `styles.css`.
-- Update day copy in `TRACKS` inside `app.js` (two items per day).
-- PWA buttons at bottom (Install + Offline).
+**Per‑day**
+- “What you learned”, “What you did”, “AWS tie‑in”
+- **Resume bullet (auto)** with one‑click copy
 
+PWA: offline, installable, local progress & streak.

@@ -1,10 +1,10 @@
 {
-  "name": "CLI 30\u2011Day Mastery",
+  "name": "CLI Mastery (Git \u2022 Bash \u2022 Linux Admin)",
   "short_name": "CLI Mastery",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#5a60ff",
-  "theme_color": "#6d5dfc",
+  "background_color": "#5B61FF",
+  "theme_color": "#6D5DFC",
   "icons": [
     {
       "src": "icons/icon-192.png",

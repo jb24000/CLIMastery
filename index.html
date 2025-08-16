@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>CLI 30‑Day Mastery</title>
-  <meta name="theme-color" content="#6d5dfc" />
+  <title>CLI Mastery (Git • Bash • Linux Admin)</title>
+  <meta name="theme-color" content="#6D5DFC" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,72 +14,88 @@
   <script defer src="app.js"></script>
 </head>
 <body>
-  <div class="wrap">
+  <div class="container">
     <header class="hero">
-      <div class="brand">
-        <div class="mark">⌘</div>
-        <div>
-          <h1>CLI 30‑Day Mastery</h1>
-          <p class="subtitle">Build your command‑line skills with daily challenges</p>
+      <div class="title">
+        <div class="logo">⌘</div>
+        <div class="text">
+          <h1>CLI Mastery</h1>
+          <p class="sub">Git (12d) • Bash (18d) • Linux Admin (30d) — with AWS tie‑ins</p>
         </div>
       </div>
       <div class="track">
-        <label for="trackSelect">Track</label>
-        <select id="trackSelect">
-          <option value="git">Git</option>
-          <option value="bash">Bash</option>
-          <option value="linux">Linux</option>
+        <label for="modeSelect">Mode</label>
+        <select id="modeSelect" aria-label="Select Mode">
+          <option value="guided">Guided Path</option>
+          <option value="free">Pick‑Your‑Track</option>
+        </select>
+        <label for="trackSelect" class="trackLabel">Track</label>
+        <select id="trackSelect" aria-label="Select Track">
+          <option value="git">Git (12 days)</option>
+          <option value="bash">Bash (18 days)</option>
+          <option value="linux">Linux Admin (30 days)</option>
         </select>
       </div>
     </header>
 
-    <section class="dashboard">
-      <div class="progress-card">
-        <div class="ring">
-          <div class="ring-fill" id="ringFill"></div>
-          <div class="ring-center" id="ringText">0%</div>
+    <main class="main">
+      <section class="progress">
+        <div class="ring-card">
+          <div class="ring" role="img" aria-label="Progress">
+            <div class="ring-center" id="ringText">0%</div>
+          </div>
         </div>
-      </div>
 
-      <div class="stats">
-        <div class="card">
-          <div class="stat-num" id="streak">0</div>
-          <div class="stat-label">Day Streak</div>
+        <div class="stat-cards">
+          <div class="card stat">
+            <div class="stat-number" id="streak">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="card stat">
+            <div class="stat-number" id="completed">0</div>
+            <div class="stat-label" id="completedLabel">Days Completed</div>
+          </div>
         </div>
-        <div class="card">
-          <div class="stat-num" id="completed">0</div>
-          <div class="stat-label">Days Completed</div>
+
+        <div class="card notify">
+          <div class="notify-left">
+            <span class="bell">🔔</span>
+            <span class="notify-text">Enable notifications for daily reminders</span>
+          </div>
+          <div class="notify-actions">
+            <button id="enableAlerts" class="btn primary">Enable Alerts</button>
+            <button id="resetBtn" class="btn outline">Reset</button>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="notify card row">
-        <span class="bell">🔔</span>
-        <span>Enable notifications for daily reminders</span>
-        <button id="enableNotifs" class="pill muted">Enable Alerts</button>
-        <button id="resetBtn" class="pill ghost">Reset</button>
-      </div>
-    </section>
+      <section class="card day">
+        <header class="day-header">
+          <button id="prevBtn" class="btn outline">← Prev</button>
+          <h2 id="dayTitle">Day 1: Welcome</h2>
+          <button id="nextBtn" class="btn outline">Next →</button>
+        </header>
 
-    <section class="day card">
-      <header class="day-head">
-        <button class="nav prev" id="prevBtn">← Prev</button>
-        <h2 id="dayTitle">Day 1: Welcome</h2>
-        <button class="nav next" id="nextBtn">Next →</button>
-      </header>
+        <ul id="taskList" class="tasks"></ul>
 
-      <ul class="tasks" id="taskList">
-        <!-- JS injects two tasks -->
-      </ul>
-    </section>
+        <div id="resumeWrap" class="resume">
+          <div class="resume-row">
+            <b>Resume bullet (auto):</b>
+            <span id="resumeBullet"></span>
+          </div>
+          <button id="copyBullet" class="btn outline small">Copy bullet</button>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <div class="left">
-        <button id="installBtn" class="pill ghost">Install App</button>
-        <button id="offlineBtn" class="pill ghost">Enable Offline</button>
+        <button id="installBtn" class="btn outline">Install App</button>
+        <button id="offlineBtn" class="btn outline">Enable Offline</button>
       </div>
       <div class="right">
-        <span id="statusDot" class="dot offline"></span>
-        <span id="statusText">Offline not enabled</span>
+        <span id="swDot" class="dot offline"></span>
+        <span id="swText">Offline not enabled</span>
       </div>
     </footer>
   </div>
